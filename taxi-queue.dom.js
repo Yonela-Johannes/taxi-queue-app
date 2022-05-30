@@ -12,9 +12,12 @@ const leaveBtn = document.querySelector('.leave_queue')
 const joinTaxiBtn = document.querySelector('.join_taxi_queue')
 const departBtn = document.querySelector('.depart')
 
+passengerCounter.innerHTML = localStorage.getItem('passCounter') ? localStorage.getItem('passCounter') : 0
+taxiQueCount.innerHTML = localStorage.getItem('taxiCounter') ? localStorage.getItem('taxiCounter') : 0
 const join = () => {
     taxiQueue.joinQueue()
     passengerCounter.innerHTML = taxiQueue.queueLength()
+    localStorage.setItem('passCounter', JSON.stringify(taxiQueue.queueLength()))
 }
 
 const leave = () => {
@@ -25,6 +28,7 @@ const leave = () => {
 const joinTaxiQueue = () => {
     taxiQueue.joinTaxiQueue()
     taxiQueCount.innerHTML = taxiQueue.taxiQueueLength()
+    localStorage.setItem('taxiCounter', JSON.stringify(taxiQueue.taxiQueueLength()))
 }
 
 const departTaxi = () => {
