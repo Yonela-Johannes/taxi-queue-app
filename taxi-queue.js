@@ -47,5 +47,3 @@ function TaxiQueue() {
 		taxiDepart
 	}
 }
-
-export { TaxiQueue }
